@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:20:39 by afontain          #+#    #+#             */
-/*   Updated: 2023/10/24 14:23:44 by afontain         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:50:16 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ bool	is_positive_int(int ac, char **av)
 	return (true);
 }
 
-int	one_philo(int ac, char **av)
+int	one_philo(t_data *data)
 {
-	
+	init_fork()
 }

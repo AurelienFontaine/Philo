@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mutex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/19 13:16:16 by afontain          #+#    #+#             */
-/*   Updated: 2023/10/25 15:19:31 by afontain         ###   ########.fr       */
+/*   Created: 2023/10/24 13:11:42 by afontain          #+#    #+#             */
+/*   Updated: 2023/10/25 17:04:04 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/philo.h"
+#include "../include/philo.h"
 
-int	main(int ac, char **av)
+int init_fork(t_data *data)
 {
-	t_data *data;
-	
-	data = NULL;
-	if (parsing(ac, av) != 0)
+	int	i;
+
+	i = 0;
+	while (i < data->args->nb_philo)
 	{
-		if (!(is_positive_int(ac, av)) == true)
-			return (printf("Les arguments ne sont pas tous des entiers positifs\n"), 0);
+		
 	}
-	if (create_data(data, ac, av) == 1)
-		return (1);
-	if (ft_atoi(av[1]) == 1)
-		return (one_philo(data));
-	// else
-		// philo(ac, av);
+}
+
+int init_mutex(t_data *data)
+{
+	phtread_mutex_t mutex;
+	
+	pthread_mutex_init(&mutex, NULL);
+	
+}
+
+void destroy_mutex(t_data *data)
+{
+	if ()
+	pthread_mutexattr_destroy()
 }

@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   thread.c                                           :+:      :+:    :+:   */
+/*   clear.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 13:12:45 by afontain          #+#    #+#             */
-/*   Updated: 2023/10/24 16:21:35 by afontain         ###   ########.fr       */
+/*   Created: 2023/10/25 12:11:19 by afontain          #+#    #+#             */
+/*   Updated: 2023/10/25 15:28:11 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int init_thread(t_data *data)
+void	clear_data(t_data *data)
 {
-	int	i;
+	if (data->philo)
+		free(data->philo);
+	if (data->args)
+		free(data->args);
+}
+
+void ft_exit(t_data *data)
+{
+	int i;
 
 	i = 0;
-	// data->start = gettimeofday();
-	while (i < data->args->nb_philo)
-	{
-		
-	}
+	while (i < data->philo->num)
+		pthread_mutex_destroy(&data->philo[i]);
+	clear_data(data);
+}
+
+int error(char *str, t_data *data)
+{
+	printf("%s\n", str);
+	if (data)
+		ft_exit(data);
+	return (1);
 }

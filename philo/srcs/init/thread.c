@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   thread.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/19 13:16:16 by afontain          #+#    #+#             */
-/*   Updated: 2023/10/25 15:19:31 by afontain         ###   ########.fr       */
+/*   Created: 2023/10/24 13:12:45 by afontain          #+#    #+#             */
+/*   Updated: 2023/10/25 15:52:28 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/philo.h"
+#include "../include/philo.h"
 
-int	main(int ac, char **av)
+int init_thread(t_data *data)
 {
-	t_data *data;
-	
-	data = NULL;
-	if (parsing(ac, av) != 0)
+	pthread_t tid;
+	int	i;
+
+	i = 0;
+	while (i < data->args->nb_philo)
 	{
-		if (!(is_positive_int(ac, av)) == true)
-			return (printf("Les arguments ne sont pas tous des entiers positifs\n"), 0);
+		pthread_create(&tid, NULL, &routine, &data);		
 	}
-	if (create_data(data, ac, av) == 1)
-		return (1);
-	if (ft_atoi(av[1]) == 1)
-		return (one_philo(data));
-	// else
-		// philo(ac, av);
 }
