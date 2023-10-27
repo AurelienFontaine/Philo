@@ -6,21 +6,26 @@
 #    By: afontain <afontain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 13:25:06 by afontain          #+#    #+#              #
-#    Updated: 2023/10/25 15:19:09 by afontain         ###   ########.fr        #
+#    Updated: 2023/10/27 16:17:45 by afontain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
 SRC = ./srcs/main.c \
-	  ./srcs/utils/utils.c \
+	  ./srcs/action/actions.c \
+      ./srcs/action/routine.c \
+	  ./srcs/action/checker.c \
+	  ./srcs/clear/clear.c \
 	  ./srcs/init/data.c \
 	  ./srcs/init/thread.c \
       ./srcs/init/mutex.c \
 	  ./srcs/parsing/parsing.c \
-	  ./srcs/clear/clear.c \
-	  ./srcs/action/routine.c \
-	  ./srcs/action/checker.c \
+	  ./srcs/time/time.c \
+	  ./srcs/utils/utils.c \
+	  
+	  
+	 
 	  
 CC = gcc
 
