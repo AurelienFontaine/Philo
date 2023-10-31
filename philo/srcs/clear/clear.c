@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 12:11:19 by afontain          #+#    #+#             */
-/*   Updated: 2023/10/25 15:28:11 by afontain         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:10:12 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ void	clear_data(t_data *data)
 {
 	if (data->philo)
 		free(data->philo);
-	if (data->args)
-		free(data->args);
+	pthread_mutex_destroy(&data->meal_check);
+	pthread_mutex_destroy(&data->stop);
+	pthread_mutex_destroy(&data->time);
+	pthread_mutex_destroy(&data->print);
 }
 
 void ft_exit(t_data *data)
@@ -26,7 +28,7 @@ void ft_exit(t_data *data)
 
 	i = 0;
 	while (i < data->philo->num)
-		pthread_mutex_destroy(&data->philo[i]);
+		pthread_mutex_destroy(&data->fork[i]);
 	clear_data(data);
 }
 

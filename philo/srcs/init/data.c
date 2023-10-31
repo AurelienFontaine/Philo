@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:28:30 by afontain          #+#    #+#             */
-/*   Updated: 2023/10/25 15:55:30 by afontain         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:22:12 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void init_args(t_args *args, int ac, char **av)
 	args->t_eat = ft_atoi(av[3]);
 	args->t_sleep = ft_atoi(av[4]);
 	if (ac == 6)
-		args->nb_meat = ft_atoi(av[5]);
+		args->nb_meal = ft_atoi(av[5]);
 	else 
-		args->nb_meat = 0;
+		args->nb_meal = 0;
 }
 
 void init_philo(t_data *data, char **av)
@@ -32,7 +32,7 @@ void init_philo(t_data *data, char **av)
 	while (i < ft_atoi(av[1]))
 	{
 		data->philo[i].is_alive = 0; 
-		data->philo[i].meat = 0; 
+		data->philo[i].n_meal = 0; 
 		data->philo[i].t_die = 0;
 		data->philo[i].num = i; 
 		i++;
@@ -45,7 +45,6 @@ int create_data(t_data *data, int ac, char **av)
 	data->dead = 0;
 	init_args(&data->args, ac, av);
 	init_philo(data, av);
-	if (!(init_fork))
-		return (1);
+	init_fork(data);
 	return (0);
 }

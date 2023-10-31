@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:16:16 by afontain          #+#    #+#             */
-/*   Updated: 2023/10/25 15:19:31 by afontain         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:27:06 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	main(int ac, char **av)
 	if (create_data(data, ac, av) == 1)
 		return (1);
 	if (ft_atoi(av[1]) == 1)
-		return (one_philo(data));
+		return (one_philo(data), 0);
 	// else
-		// philo(ac, av);
+	// 	routine(ac, av);
+	// ft_exit(data);
 }

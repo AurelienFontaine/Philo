@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:17:31 by afontain          #+#    #+#             */
-/*   Updated: 2023/10/27 16:23:25 by afontain         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:26:29 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ typedef struct s_philo
 	int				t_die;
 	bool			is_alive;
 	void			*next;
-	pthread_mutex_t	fork_G;
-	pthread_mutex_t	fork_D;
+	int				time;
+	pthread_mutex_t	*fork_G;
+	pthread_mutex_t	*fork_D;
 }	t_philo;
 
 typedef struct s_args
@@ -49,19 +50,22 @@ typedef struct s_data
 	t_args			args;
 	int				dead;		
 	long			start;
-	pthread_mutex_t	meal;
+	pthread_mutex_t fork[200];
+	pthread_mutex_t	meal_check;
 	pthread_mutex_t	stop;
 	pthread_mutex_t	time;
+	pthread_mutex_t	print;
 }	t_data;
 
 //Main
 
 //Action
+int eating(t_philo *philo, t_data *data);
 int sleeping(t_philo *philo, t_data *data);
 int take_fork(t_philo *philo, t_data *data);
 int thinking(t_philo *philo, t_data *data);
 //Routine
-void		*routine(void *data);
+// void		*routine(void *data);
 
 //Checker
 int check_dead(t_data *data);
@@ -84,14 +88,14 @@ int			init_fork(t_data *data);
 int 		init_thread(t_data *data);
 
 //Parsing
-int			one_philo(t_data *data);
+void		one_philo(t_data *data);
 bool		is_positive_int(int ac, char **av);
 int			parsing(int ac, char **av);
 
 //Time
 int			ft_usleep(long time);
-long		get_time(void);
-long		get_time_from_start(long time_to_wait);
+long long	get_time(void);
+long long	get_time_from_start(long long time_to_wait);
 
 //Utils
 int			ft_atoi(char *str);

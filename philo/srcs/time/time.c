@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 13:04:14 by afontain          #+#    #+#             */
-/*   Updated: 2023/10/27 13:25:34 by afontain         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:23:20 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_usleep(long time)
 	return(0);
 }
 
-long	get_time(void)
+long long	get_time(void)
 {
 	struct timeval	tv;
 	
@@ -30,7 +30,17 @@ long	get_time(void)
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
-long	get_time_from_start(long time_to_wait)
+// unsigned long	get_time(t_philo *philo)
+// {
+// 	unsigned long time;
+
+// 	gettimeofday(&philo->time.cmp, NULL);
+// 	time = (philo->time.cmp.tv_sec - philo->time.start.tv_sec) * 1000
+// 		+ (philo->time.cmp.tv_usec - philo->time.start.tv_usec) / 1000;
+// 	return (time);
+// }
+
+long long	get_time_from_start(long long time_to_wait)
 {
 	struct timeval	time;
 

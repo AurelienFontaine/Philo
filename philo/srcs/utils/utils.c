@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:19:26 by afontain          #+#    #+#             */
-/*   Updated: 2023/10/27 13:03:30 by afontain         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:01:59 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,3 @@ int	ft_atoi(char *str)
 	return (nb * signe);
 }
 
-//usleep with better precision

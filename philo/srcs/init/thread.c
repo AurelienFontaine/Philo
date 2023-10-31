@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 13:12:45 by afontain          #+#    #+#             */
-/*   Updated: 2023/10/25 15:52:28 by afontain         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:23:15 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ int init_thread(t_data *data)
 	int	i;
 
 	i = 0;
-	while (i < data->args->nb_philo)
+	while (i < data->args.nb_philo)
 	{
 		pthread_create(&tid, NULL, &routine, &data);		
 	}
+	return (0);
 }

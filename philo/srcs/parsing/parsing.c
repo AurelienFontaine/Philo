@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:20:39 by afontain          #+#    #+#             */
-/*   Updated: 2023/10/27 13:50:32 by afontain         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:23:34 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ bool	is_positive_int(int ac, char **av)
 	return (true);
 }
 
-int	one_philo(t_data *data)
+void	one_philo(t_data *data)
 {
 	data->start = get_time();
 	printf("0	1 has taken a fork\n");
