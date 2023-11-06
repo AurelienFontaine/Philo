@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 12:05:30 by afontain          #+#    #+#             */
-/*   Updated: 2023/10/31 16:03:22 by afontain         ###   ########.fr       */
+/*   Updated: 2023/11/06 14:56:08 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int thinking(t_philo *philo, t_data *data)
 
 	i = philo->num;
 	if (!is_dead(data, i))
-		return (1);
+		return (printf("%lld Philo %i is thinking\n", get_time_from_start(data->start), i), 1);
 	return (0);
 }
 
@@ -28,7 +28,7 @@ int sleeping(t_philo *philo, t_data *data)
 	
 	i = philo->num;
 	if (!is_dead(data, i))
-		return (printf("%lld Philo %i is sleeping\n", get_time_from_start(data->start), i));
+		return (printf("%lld Philo %i is sleeping\n", get_time_from_start(data->start), i), 1);
 	ft_usleep(data->args.t_sleep);
 	return (0);
 }
@@ -50,11 +50,22 @@ int take_fork(t_philo *philo, t_data *data)
 	int i;
 
 	i = philo->num;
-	pthread_mutex_lock(&data->philo->fork_D);
-	pthread_mutex_lock(&data->philo->fork_G);
-	ft_usleep(data->args.t_eat);
-	printf("%lld Philo %i is eating\n", get_time_from_start(data->start), i);
-	pthread_mutex_unlock(&data->philo->fork_D);
-	pthread_mutex_unlock(&data->philo->fork_G);
+	if (i == 0)
+	{
+		pthread_mutex_lock(&data->philo->fork_D);
+		pthread_mutex_lock(&data->philo->fork_G);
+		printf("%lld Philo %i is eating\n", get_time_from_start(data->start), i);
+		pthread_mutex_unlock(&data->philo->fork_D);
+		pthread_mutex_unlock(&data->philo->fork_G);
+	}
+	else
+	{
+		pthread_mutex_lock(&data->philo->fork_D);
+		pthread_mutex_lock(&data->philo->fork_G);
+		ft_usleep(data->args.t_eat);
+		printf("%lld Philo %i is eating\n", get_time_from_start(data->start), i);
+		pthread_mutex_unlock(&data->philo->fork_D);
+		pthread_mutex_unlock(&data->philo->fork_G);
+	}
 	return (0);
 }

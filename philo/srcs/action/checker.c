@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 14:59:05 by afontain          #+#    #+#             */
-/*   Updated: 2023/10/31 16:03:33 by afontain         ###   ########.fr       */
+/*   Updated: 2023/11/06 14:48:06 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ int is_dead(t_data *data, int i)
 {	
 	long	time;
 
+	if (i == data->args.nb_philo - 1)
+		i = 0;
+	pthread_mutex_lock(&data->time);
 	time = get_time_from_start(data->philo[i].t_die);
+	pthread_mutex_unlock(&data->time);
 	if (time > data->args.t_die)
 	{
 		pthread_mutex_lock(&data->time);
