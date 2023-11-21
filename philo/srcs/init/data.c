@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:28:30 by afontain          #+#    #+#             */
-/*   Updated: 2023/10/31 16:22:12 by afontain         ###   ########.fr       */
+/*   Updated: 2023/11/13 17:53:17 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void init_philo(t_data *data, char **av)
 		data->philo[i].is_alive = 0; 
 		data->philo[i].n_meal = 0; 
 		data->philo[i].t_die = 0;
+		data->philo[i].thread = 0;
+		data->philo[i].datax = data;
 		data->philo[i].num = i; 
 		i++;
 	}
@@ -45,6 +47,7 @@ int create_data(t_data *data, int ac, char **av)
 	data->dead = 0;
 	init_args(&data->args, ac, av);
 	init_philo(data, av);
-	init_fork(data);
+	if (init_mutex(data))
+		return (1);
 	return (0);
 }

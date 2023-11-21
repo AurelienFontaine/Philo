@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:20:39 by afontain          #+#    #+#             */
-/*   Updated: 2023/10/31 16:23:34 by afontain         ###   ########.fr       */
+/*   Updated: 2023/11/21 18:44:49 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,13 @@ bool	is_positive_int(int ac, char **av)
 	return (true);
 }
 
-void	one_philo(t_data *data)
+void	one_philo(t_data *data, char **av)
 {
+	long i;
+
+	i = ft_atoi(av[2]);
 	data->start = get_time();
 	printf("0	1 has taken a fork\n");
-	ft_usleep(data->args.t_die);
-	printf("%ld	1 has died\n", data->args.t_die);
+	ft_usleep(i);
+	printf("%ld	1 has died\n", i);
 }

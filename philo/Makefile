@@ -6,7 +6,7 @@
 #    By: afontain <afontain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 13:25:06 by afontain          #+#    #+#              #
-#    Updated: 2023/10/27 16:17:45 by afontain         ###   ########.fr        #
+#    Updated: 2023/11/13 17:26:37 by afontain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,9 +24,6 @@ SRC = ./srcs/main.c \
 	  ./srcs/time/time.c \
 	  ./srcs/utils/utils.c \
 	  
-	  
-	 
-	  
 CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra -g
@@ -39,7 +36,7 @@ AR =  ar rcs
 OBJ = $(SRC:.c=.o)
 
 $(NAME)	:	${OBJ}
-		$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+		$(CC) -pthread $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
 all	:	$(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:17:31 by afontain          #+#    #+#             */
-/*   Updated: 2023/11/06 14:57:22 by afontain         ###   ########.fr       */
+/*   Updated: 2023/11/14 17:38:49 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_philo
 	bool			is_alive;
 	void			*next;
 	int				time;
+	void 			*datax;
+	pthread_t		thread;
 	pthread_mutex_t	*fork_G;
 	pthread_mutex_t	*fork_D;
 }	t_philo;
@@ -48,6 +50,7 @@ typedef struct s_data
 {
 	t_philo			philo[200];
 	t_args			args;
+	pthread_t		check;
 	int				dead;		
 	long			start;
 	pthread_mutex_t fork[200];
@@ -60,17 +63,17 @@ typedef struct s_data
 //Main
 
 //Action
-int eating(t_philo *philo, t_data *data);
-int sleeping(t_philo *philo, t_data *data);
-int take_fork(t_philo *philo, t_data *data);
-int thinking(t_philo *philo, t_data *data);
+int 		eating(t_philo *philo, t_data *data);
+int 		sleeping(t_philo *philo, t_data *data);
+int 		take_fork(t_philo *philo, t_data *data);
+int			thinking(t_philo *philo, t_data *data);
 //Routine
-// void		*routine(void *data);
-
+void		*routine(void *data);
+int 		loop(t_philo *philo, t_data *data);
 //Checker
-int check_dead(t_data *data);
-int is_dead(t_data *data, int i);
-int	has_all_eaten(t_data *data, int i);
+void		*check_dead(void *arg);
+int 		is_dead(t_data *data, int *i);
+int			has_all_eaten(t_data *data, int i);
 
 //Clear
 void		clear_data(t_data *data);
@@ -84,11 +87,14 @@ void		init_philo(t_data *data, char **av);
 int			create_data(t_data *data, int ac, char **av);
 	//Mutex
 int			init_fork(t_data *data);
+int			init_mutex(t_data *data);
+void		destroyer(t_data *data, int n);
 	//Thread
 int 		init_thread(t_data *data);
+int			join_threads(t_data *data);
 
 //Parsing
-void		one_philo(t_data *data);
+void		one_philo(t_data *data, char **av);
 bool		is_positive_int(int ac, char **av);
 int			parsing(int ac, char **av);
 
