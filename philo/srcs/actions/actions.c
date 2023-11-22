@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:37:37 by afontain          #+#    #+#             */
-/*   Updated: 2023/11/22 11:39:56 by afontain         ###   ########.fr       */
+/*   Updated: 2023/11/22 20:09:31 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,11 @@ int	sleeping(t_philo *philo, t_data *data)
 
 int	thinking(t_philo *philo, t_data *data)
 {
-	if (print_action(philo, data, THINK))
-		return (1);
+	unsigned long	count;
+
+	count = (data->args.t_die - (data->args.t_sleep + data->args.t_eat));
+	print_action(philo, data, THINK);
+	if (count > 0 && data->args.nb_philo)
+		ft_usleep(data, count / 2);
 	return (0);
 }
