@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 12:06:15 by afontain          #+#    #+#             */
-/*   Updated: 2023/11/22 15:35:10 by afontain         ###   ########.fr       */
+/*   Updated: 2023/11/22 16:40:02 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	*routine(void *arg)
 	t_philo	*philo;
 	t_data	*datax;
 	int		i;
-	
+
 	philo = (t_philo *)arg;
 	datax = philo->datax;
 	i = 0;
