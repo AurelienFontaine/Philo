@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 14:59:05 by afontain          #+#    #+#             */
-/*   Updated: 2023/11/22 13:49:04 by afontain         ###   ########.fr       */
+/*   Updated: 2023/11/22 16:16:00 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ int	is_dead(t_data *data, int *i)
 	pthread_mutex_unlock(&data->time);
 	if (time > data->args.t_die)
 	{
-		pthread_mutex_lock(&data->time);
+		pthread_mutex_lock(&data->stop);
 		data->dead = true;
-		pthread_mutex_unlock(&data->time);
+		pthread_mutex_unlock(&data->stop);
 		pthread_mutex_lock(&data->print);
 		printf("%lld	%d died\n", get_time_from_start(data->start), *i + 1);
 		pthread_mutex_unlock(&data->print);
