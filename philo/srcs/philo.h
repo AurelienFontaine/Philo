@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:17:31 by afontain          #+#    #+#             */
-/*   Updated: 2023/11/22 15:47:39 by afontain         ###   ########.fr       */
+/*   Updated: 2023/11/22 20:27:35 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define SLEEP		" is sleeping\n"
 # define THINK		" is thinking\n"
 # define TAKE_FORK		" has taken a fork\n"
-# define PHILO_DIED		" has died\n"
+# define PHILO_DIED		" died\n"
 
 // Error
 # define MALLOC			"Error malloc"
